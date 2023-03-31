@@ -1,1 +1,1 @@
-# Rock-Paper-Scissors-Game
+# Game of rock-paper-scissors first to five
