@@ -3,155 +3,115 @@ const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
 
 rockBtn.addEventListener('click', playRock);
+
 paperBtn.addEventListener('click', playPaper);
-scissorsBtn.addEventListener('click', playScissors);
+
+scissorsBtn.addEventListener('click', playScissors)
 
 function getComputerChoice() { //random computer choice
-    let x = Math.random();
-    if (x < 0.33) {
-        return "rock";
+    let c = Math.random();
+    if (c < 0.33) {
+        return 'rock';
     }
-    else if (x < 0.67) {
-        return "paper";
+    else if (c < 0.67) {
+        return 'paper';
     }
     else {
-        return "scissors";
+        return 'scissors';
     }
 }
 
 let x = 0; //win counter variable player
 let y = 0; //win counter variable computer
 
-const results = document.querySelector('.results');
+const result = document.querySelector('.result');
+
+const playerScore = document.querySelector('.player-score');
+const computerScore = document.querySelector('.computer-score');
 
 function playRock(){
     let computerSelection = getComputerChoice();
-    let playerSelection = "rock";
-    if (computerSelection==="rock"){
-        const drawPara = document.createElement('p');
-        drawPara.textContent = 'Draw! You both picked Rock';
-        results.appendChild(drawPara);
+    let playerSelection = 'rock';
+    if (computerSelection==='rock'){
+        result.textContent = 'Draw! You both picked Rock';
     }
-    else if (computerSelection==="paper"){
+    else if (computerSelection==='paper'){
         y++;
-        const losePara = document.createElement('p');
-        losePara.textContent = 'You lose! Paper beats Rock';
-        results.appendChild(losePara);
+        computerScore.textContent = y;
+        result.textContent = 'You lose! Paper beats Rock';
     }
-    else if (computerSelection==="scissors"){
+    else if (computerSelection==='scissors'){
         x++;
-        const winPara = document.createElement('p');
-        winPara.textContent = 'You win! Rock beats Scissors';
-        results.appendChild(winPara);
+        playerScore.textContent = x
+        result.textContent = 'You win! Rock beats Scissors';
     }
-    const para = document.createElement('p');
-    para.textContent = `You: ${x} | Computer: ${y}`;
-    results.appendChild(para);
     if(x === 5 || y === 5){
         rockBtn.removeEventListener('click', playRock);
         paperBtn.removeEventListener('click', playPaper);
         scissorsBtn.removeEventListener('click', playScissors);
         if(x===5){
-            const winnerPara = document.createElement('p');
-            winnerPara.textContent = 'You won the game first to five!';
-            winnerPara.style.color = 'green';
-            winnerPara.style.fontWeight = '800';
-            results.appendChild(winnerPara);
+            result.textContent = 'You won the game first to five!';
         }
         else if(y===5){
-            const winnerPara = document.createElement('p');
-            winnerPara.textContent = 'You lost the game first to five!';
-            winnerPara.style.color = 'red';
-            winnerPara.style.fontWeight = '800';
-            results.appendChild(winnerPara);
+            result.textContent = 'You lost the game first to five!';
         }
     }
 }
 
 function playPaper(){
     let computerSelection = getComputerChoice();
-    let playerSelection = "paper";
-    if (computerSelection==="paper"){
-        const drawPara = document.createElement('p');
-        drawPara.textContent = 'Draw! You both picked Paper';
-        results.appendChild(drawPara);
+    let playerSelection = 'paper';
+    if (computerSelection==='paper'){
+        result.textContent = 'Draw! You both picked Paper';
     }
-    else if (computerSelection==="scissors"){
+    else if (computerSelection==='scissors'){
         y++;
-        const losePara = document.createElement('p');
-        losePara.textContent = 'You lose! Scissors beats Paper';
-        results.appendChild(losePara);
+        computerScore.textContent = y;
+        result.textContent = 'You lose! Scissors beats Paper';
     }
-    else if (computerSelection==="rock"){
+    else if (computerSelection==='rock'){
         x++;
-        const winPara = document.createElement('p');
-        winPara.textContent = 'You win! Paper beats Rock';
-        results.appendChild(winPara);
+        playerScore.textContent = x;
+        result.textContent = 'You win! Paper beats Rock';
     }
-    const para = document.createElement('p');
-    para.textContent = `You: ${x} | Computer: ${y}`;
-    results.appendChild(para);
     if(x === 5 || y === 5){
         rockBtn.removeEventListener('click', playRock);
         paperBtn.removeEventListener('click', playPaper);
         scissorsBtn.removeEventListener('click', playScissors);
         if(x===5){
-            const winnerPara = document.createElement('p');
-            winnerPara.textContent = 'You won the game first to five!';
-            winnerPara.style.color = 'green';
-            winnerPara.style.fontWeight = '800';
-            results.appendChild(winnerPara);
+            result.textContent = 'You won the game first to five!';
         }
         else if(y===5){
-            const winnerPara = document.createElement('p');
-            winnerPara.textContent = 'You lost the game first to five!';
-            winnerPara.style.color = 'red';
-            winnerPara.style.fontWeight = '800';
-            results.appendChild(winnerPara);
+            result.textContent = 'You lost the game first to five!';
         }
     }
 }
 
 function playScissors(){
     let computerSelection = getComputerChoice();
-    let playerSelection = "scissors";
-    if (computerSelection==="scissors"){
-        const drawPara = document.createElement('p');
-        drawPara.textContent = 'Draw! You both picked Scissors';
-        results.appendChild(drawPara);
+    let playerSelection = 'scissors';
+    if (computerSelection==='scissors'){
+        result.textContent = 'Draw! You both picked Scissors';
     }
-    else if (computerSelection==="rock"){
+    else if (computerSelection==='rock'){
         y++;
-        const losePara = document.createElement('p');
-        losePara.textContent = 'You lose! Rock beats Scissors';
-        results.appendChild(losePara);
+        computerScore.textContent = y;
+        result.textContent = 'You lose! Rock beats Scissors';
     }
-    else if (computerSelection==="paper"){
+    else if (computerSelection==='paper'){
         x++;
-        const winPara = document.createElement('p');
-        winPara.textContent = 'You win! Scissors beats Paper';
-        results.appendChild(winPara);
+        playerScore.textContent = x;
+        result.textContent = 'You win! Scissors beats Paper';
     }
-    const para = document.createElement('p');
-    para.textContent = `You: ${x} | Computer: ${y}`;
-    results.appendChild(para);
     if(x === 5 || y === 5){
         rockBtn.removeEventListener('click', playRock);
         paperBtn.removeEventListener('click', playPaper);
         scissorsBtn.removeEventListener('click', playScissors);
         if(x===5){
-            const winnerPara = document.createElement('p');
-            winnerPara.textContent = 'You won the game first to five!';
-            winnerPara.style.color = 'green';
-            winnerPara.style.fontWeight = '800';
-            results.appendChild(winnerPara);
+            result.textContent = 'You won the game first to five!';
         }
         else if(y===5){
-            const winnerPara = document.createElement('p');
-            winnerPara.textContent = 'You lost the game first to five!';
-            winnerPara.style.color = 'red';
-            winnerPara.style.fontWeight = '800';
-            results.appendChild(winnerPara);
+            result.textContent = 'You lost the game first to five!';
         }
     }
 }
